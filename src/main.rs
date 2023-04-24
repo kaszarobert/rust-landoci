@@ -2,6 +2,7 @@ fn main() {
     println!("{}", add_numbers(1, 2));
 }
 
+
 fn add_numbers(a: i32, b: i32) -> i32 {
     a + b
 }
