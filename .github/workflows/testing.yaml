@@ -20,7 +20,7 @@ jobs:
 
             # App tests. Previous command return code can be checked with: echo $?
             - run: lando start
-            - run: lando cargo fmt --all -- --check
             - run: lando cargo build --release
             - run: lando cargo test --verbose
+            - run: lando cargo fmt --all -- --check
 
