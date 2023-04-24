@@ -1,0 +1,31 @@
+name: rustci
+
+services:
+  app:
+    type: compose
+    scanner: false
+    app_mount: delegated
+    services:
+      image: rust:1.69-slim-buster
+      command: tail -f /dev/null
+    build:
+      - rustup component add rustfmt
+    volumes:
+      app:
+
+tooling:
+  rustc:
+    service: app
+  cargo:
+    service: app
+  rustup:
+    service: app
+
+  stylint:
+    service: app
+    cmd:
+      - cargo fmt --all -- --check
+  stylint-fix:
+    service: app
+    cmd:
+      - cargo fmt --all --
